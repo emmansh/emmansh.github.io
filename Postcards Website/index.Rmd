@@ -1,19 +1,15 @@
 ---
-title: "Tobi Burns"
-image: "tobi.jpg"
+title: "Emmanuel Shpigel"
+image: "emmanuel-head.jfif"
 links:
   - label: LinkedIn
-    url: "https://linkedin.com/"
-  - label: Twitter
-    url: "https://twitter.com/"
-  - label: GitHub
-    url: "https://github.com/"
+    url: "https://www.linkedin.com/in/emmanuel-sh/"
+  - label: Stack Overflow
+    url: "https://stackoverflow.com/users/6105259/emman"
   - label: Email
-    url: "mailto:email@email.com"
+    url: "mailto:emmansh@gmail.com"
 output:
   postcards::jolla
 ---
  
-I am a classically trained data scientist living in the San Francisco Bay Area. 
-Currently I work on the Oculus team at Facebook. I love talking about baseball, 
-true crime podcasts, and causal inference.
+I'm passionate about human behavior, science, and computer programming. I believe that learning and decision-making should be done empirically based on data. I therefore look for opportunities that involve research and analytics, ideally with some behavioral aspect.
