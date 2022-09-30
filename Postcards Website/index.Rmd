@@ -11,5 +11,8 @@ links:
 output:
   postcards::jolla
 ---
- 
-I'm passionate about human behavior, science, and computer programming. I believe that learning and decision-making should be done empirically based on data. I therefore look for opportunities that involve research and analytics, ideally with some behavioral aspect.
+
+I'm a data analyst, quantitative researcher, and back-end programmer at [Kayma Labs](https://kayma.com/kayma-english.html). I have trained as an experimental researcher in the United States and Israel, and my work combines statistics, programming, and behavioral theory. I work in R, Python, SQL, & JavaScript. 
+<br>
+<br>
+I live in Israel with my wife and daughters. Outside of work I enjoy cooking🍲 and gardening🌱.
