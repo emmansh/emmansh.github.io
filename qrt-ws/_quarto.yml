@@ -1,0 +1,7 @@
+project:
+  title: "qrt-ws"
+  type: website
+  output-dir: docs
+  
+editor: visual
+
