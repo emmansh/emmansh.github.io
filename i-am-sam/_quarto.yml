@@ -1,0 +1,7 @@
+project:
+  title: "i-am-sam"
+  type: website
+  output-dir: docs
+
+editor: visual
+
