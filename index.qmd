@@ -1,12 +1,22 @@
 ---
-title: "emmansh.github.io"
+title: "Emmanuel Shpigel"
+image: img/emmanuel-head.jfif
+about: 
+  template: jolla
+  image-width: 10em
+  links:
+    - text: LinkedIn
+      href: "https://www.linkedin.com/in/emmanuel-sh/"
+      icon: linkedin
+    - text: Stack Overflow
+      href: "https://stackoverflow.com/users/6105259/emman"
+      icon: stack-overflow
+    - text: Email
+      href: "mailto:emmansh@gmail.com"
+      icon: envelope
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 10
-```
-
+I'm a data analyst, quantitative researcher, and back-end programmer at [Kayma Labs](https://kayma.com/kayma-english.html). I have trained as an experimental researcher in the United States and Israel, and my work combines statistics, programming, and behavioral theory. I work in R, Python, SQL, & JavaScript. 
+<br>
+<br>
+I live in Israel with my wife and daughters. Outside of work I enjoy cooking🍲 and gardening🌱.

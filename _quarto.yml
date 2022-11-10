@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "emmansh.github.io"
+  title: "Emmanuel Shpigel"
   navbar:
     left:
       - href: index.qmd
@@ -12,7 +12,9 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: superhero
     css: styles.css
     toc: true
 
