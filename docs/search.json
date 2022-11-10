@@ -14,10 +14,24 @@
     "text": "I’m a data analyst, quantitative researcher, and back-end programmer at Kayma Labs. I have trained as an experimental researcher in the United States and Israel, and my work combines statistics, programming, and behavioral theory. I work in R, Python, SQL, & JavaScript.   I live in Israel with my wife and daughters. Outside of work I enjoy cooking🍲 and gardening🌱."
   },
   {
+    "objectID": "posts/2022-11-10-my-first-post/index.html#set-up-sql",
+    "href": "posts/2022-11-10-my-first-post/index.html#set-up-sql",
+    "title": "blog post title",
+    "section": "Set up SQL",
+    "text": "Set up SQL\n\n# R\nlibrary(DBI)\nlibrary(duckdb)\nlibrary(ggplot2)\n\n\n# R\n## create connection to SQL database\ncon <- DBI::dbConnect(duckdb::duckdb(), dbdir = \"duckdb\")\n## copy mpg dataset from ggplot2 onto the SQL database, via `con`\ndbWriteTable(con, \"mpg\", ggplot2::mpg, overwrite = TRUE)"
+  },
+  {
+    "objectID": "posts/2022-11-10-my-first-post/index.html#print-tables-from-r-python-and-sql-in-panel-tabset",
+    "href": "posts/2022-11-10-my-first-post/index.html#print-tables-from-r-python-and-sql-in-panel-tabset",
+    "title": "blog post title",
+    "section": "Print tables from R, Python, and SQL in panel tabset",
+    "text": "Print tables from R, Python, and SQL in panel tabset\n\n\n\n\nRPythonSQL\n\n\n\nggplot2::mpg |> \n  dplyr::select(manufacturer, displ, cty) |> \n  print_as_dt()\n\n\n\n\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\nx = [1,2,np.nan]\ny = [3,4,5]\ndf = pd.DataFrame({'x':x,'y':y})\n\n\n\n\n\n\n\n\n\n\n\nSELECT manufacturer, displ, cty\nFROM mpg;"
+  },
+  {
     "objectID": "posts.html",
     "href": "posts.html",
-    "title": "My Portfolio",
+    "title": "Portfolio",
     "section": "",
-    "text": "No matching items"
+    "text": "Here I list analyses I did.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nblog post title\n\n\n\nQuarto\n\n\nR\n\n\nMEDS\n\n\n\nblog post description (appears underneath the title in smaller text) which is included on the listing page\n\n\n\nSamantha Csik\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

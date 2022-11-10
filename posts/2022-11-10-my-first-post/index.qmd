@@ -12,7 +12,91 @@ categories: [Quarto, R, MEDS] # self-defined categories
 citation: 
   url: https://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/ 
 image: mj.jpg
-draft: true # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+execute: 
+  warning: false
 ---
 
-foo bar baz test
+```{r}
+#| echo: false
+library(reticulate)
+use_virtualenv("./env", required = TRUE)
+```
+
+
+## Set up SQL
+```{r}
+# R
+library(DBI)
+library(duckdb)
+library(ggplot2)
+```
+
+```{r}
+# R
+## create connection to SQL database
+con <- DBI::dbConnect(duckdb::duckdb(), dbdir = "duckdb")
+## copy mpg dataset from ggplot2 onto the SQL database, via `con`
+dbWriteTable(con, "mpg", ggplot2::mpg, overwrite = TRUE)
+```
+
+## Print tables from R, Python, and SQL in panel tabset
+```{r}
+#| echo: false
+# display NaN cells in DT::datatable()
+options(htmlwidgets.TOJSON_ARGS = list(na = 'string')) # https://stackoverflow.com/a/48694410/6105259
+
+print_as_dt <- function(x){
+  DT::datatable(x,
+                rownames = FALSE,
+                options = list(
+                  dom = 'ltipr', # to remove search box; https://stackoverflow.com/a/61952067/6105259
+                  autoWidth = TRUE,
+                  columnDefs = list(
+                    list(className = 'dt-left', targets = "_all"),
+                    list(width = '200px', targets = "_all")
+                    )
+                  )
+                )
+}
+```
+
+::: {.panel-tabset}
+
+## R
+```{r}
+ggplot2::mpg |> 
+  dplyr::select(manufacturer, displ, cty) |> 
+  print_as_dt()
+```
+
+## Python
+
+```{python}
+import pandas as pd
+import numpy as np
+x = [1,2,np.nan]
+y = [3,4,5]
+df = pd.DataFrame({'x':x,'y':y})
+```
+
+```{r}
+#| echo: false
+print_as_dt(py$df)
+```
+
+
+## SQL
+```{sql}
+#| connection: con
+#| output.var: "tab_sql"
+SELECT manufacturer, displ, cty
+FROM mpg;
+```
+
+```{r}
+#| echo: false
+print_as_dt(tab_sql)
+```
+
+:::

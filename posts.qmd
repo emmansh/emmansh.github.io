@@ -1,5 +1,5 @@
 ---
-title: "My Portfolio"
+title: "Portfolio"
 listing: 
   contents: posts # all Quarto docs in the `posts` directory will be included on your listing page
   type: grid # or `default` or `table`; each type has its own set of yaml options to include
@@ -7,3 +7,4 @@ listing:
   categories: true # allows you to sort posts by assigned categories 
 ---
 
+Here I list analyses I did.
