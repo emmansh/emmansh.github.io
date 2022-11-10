@@ -100,3 +100,23 @@ print_as_dt(tab_sql)
 ```
 
 :::
+
+
+## Download data from Kaggle
+```{r}
+library(httr)
+library(readr)
+
+data_url_on_kaggle <- "https://www.kaggle.com/api/v1/datasets/download/michaelbryantds/witch-trials/trials.csv"
+
+my_username <- "kaggle_username_from_json"
+my_password <- "kaggle_key_from_json"
+
+response_obj <- httr::GET(data_url_on_kaggle, 
+                          httr::authenticate(Sys.getenv("KAGGLE_USERNAME"), Sys.getenv("KAGGLE_PASSWORD"), type = "basic"))
+
+
+df_via_read_csv <- read_csv(response_obj$url)
+print_as_dt(df_via_read_csv)
+```
+
