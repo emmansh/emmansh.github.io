@@ -14,17 +14,10 @@
     "text": "I’m a data analyst, quantitative researcher, and back-end programmer at Kayma Labs. I have trained as an experimental researcher in the United States and Israel, and my work combines statistics, programming, and behavioral theory. I work in R, Python, SQL, & JavaScript.   I live in Israel with my wife and daughters. Outside of work I enjoy cooking🍲 and gardening🌱."
   },
   {
-    "objectID": "posts/2022-11-10-my-first-post/index.html",
-    "href": "posts/2022-11-10-my-first-post/index.html",
-    "title": "blog post title",
-    "section": "",
-    "text": "foo bar baz test\n\n\n\nCitationBibTeX citation:@online{csik2022,\n  author = {Samantha Csik},\n  title = {Blog Post Title},\n  date = {2022-10-24},\n  url = {https://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nSamantha Csik. 2022. “Blog Post Title.” October 24, 2022.\nhttps://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/."
-  },
-  {
     "objectID": "posts.html",
     "href": "posts.html",
     "title": "My Portfolio",
     "section": "",
-    "text": "blog post title\n\n\n\nQuarto\n\n\nR\n\n\nMEDS\n\n\n\nblog post description (appears underneath the title in smaller text) which is included on the listing page\n\n\n\nSamantha Csik\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "No matching items"
   }
 ]
