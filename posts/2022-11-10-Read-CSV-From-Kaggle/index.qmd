@@ -1,7 +1,7 @@
 ---
 title: "Read CSV from Kaggle"
 description: "How to get data when authentication is needed"
-date: 10-24-2022
+date: 11-13-2022
 categories: [python, R, read-csv, authentication] # self-defined categories
 image: img\files.jpg
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
@@ -15,10 +15,12 @@ library(reticulate)
 use_virtualenv("./pyenv", required = TRUE)
 ```
 
-## Print tables from R, Python, and SQL in panel tabset
-### Utility function for nice printing
+Utility function for nice printing
 ```{r}
+#| code-fold: true
+#| code-summary: "Code"
 #| echo: true
+# R
 library(kableExtra)
 
 print_table <- function(tbl, n_rows = 10){
@@ -60,14 +62,17 @@ import requests
 import os
 import pandas as pd
 
-kaggle_username_py=os.getenv('KAGGLE_USERNAME_PY')
-kaggle_password_py=os.getenv('KAGGLE_PASSWORD_PY')
+data_url_on_kaggle = 'https://www.kaggle.com/api/v1/datasets/download/michaelbryantds/witch-trials/trials.csv'
 
-response_obj_py=requests.get('https://www.kaggle.com/api/v1/datasets/download/michaelbryantds/witch-trials/trials.csv', auth=(kaggle_username_py, kaggle_password_py))
-df_pandas=pd.read_csv(response_obj_py.url)
+kaggle_username = os.getenv('KAGGLE_USERNAME_PY')
+kaggle_password = os.getenv('KAGGLE_PASSWORD_PY')
+
+response_obj_py = requests.get(data_url_on_kaggle, auth = (kaggle_username, kaggle_password))
+df_pandas = pd.read_csv(response_obj_py.url)
 ```
 
 ```{r}
+#| echo: false
 print_table(py$df_pandas)
 ```
 

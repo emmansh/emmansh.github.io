@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-10-24">
+<meta name="dcterms.date" content="2022-11-13">
 <meta name="description" content="How to get data when authentication is needed">
 
 <title>Emmanuel Shpigel - Read CSV from Kaggle</title>
@@ -196,7 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 24, 2022</p>
+        <p class="date">November 13, 2022</p>
       </div>
     </div>
     
@@ -212,11 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#print-tables-from-r-python-and-sql-in-panel-tabset" id="toc-print-tables-from-r-python-and-sql-in-panel-tabset" class="nav-link active" data-scroll-target="#print-tables-from-r-python-and-sql-in-panel-tabset">Print tables from R, Python, and SQL in panel tabset</a>
-  <ul class="collapse">
-  <li><a href="#utility-function-for-nice-printing" id="toc-utility-function-for-nice-printing" class="nav-link" data-scroll-target="#utility-function-for-nice-printing">Utility function for nice printing</a></li>
-  </ul></li>
-  <li><a href="#download-data-from-kaggle" id="toc-download-data-from-kaggle" class="nav-link" data-scroll-target="#download-data-from-kaggle">Download data from Kaggle</a></li>
+  <li><a href="#download-data-from-kaggle" id="toc-download-data-from-kaggle" class="nav-link active" data-scroll-target="#download-data-from-kaggle">Download data from Kaggle</a></li>
   </ul>
 </nav>
     </div>
@@ -229,22 +225,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 
 </div>
-<section id="print-tables-from-r-python-and-sql-in-panel-tabset" class="level2">
-<h2 class="anchored" data-anchor-id="print-tables-from-r-python-and-sql-in-panel-tabset">Print tables from R, Python, and SQL in panel tabset</h2>
-<section id="utility-function-for-nice-printing" class="level3">
-<h3 class="anchored" data-anchor-id="utility-function-for-nice-printing">Utility function for nice printing</h3>
+<p>Utility function for nice printing</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>print_table <span class="ot">&lt;-</span> <span class="cf">function</span>(tbl, <span class="at">n_rows =</span> <span class="dv">10</span>){</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  tbl <span class="sc">|&gt;</span> </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(n_rows) <span class="sc">|&gt;</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kbl</span>(<span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">position =</span> <span class="st">"left"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>print_table <span class="ot">&lt;-</span> <span class="cf">function</span>(tbl, <span class="at">n_rows =</span> <span class="dv">10</span>){</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  tbl <span class="sc">|&gt;</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(n_rows) <span class="sc">|&gt;</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kbl</span>(<span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">position =</span> <span class="st">"left"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-</section>
-</section>
 <section id="download-data-from-kaggle" class="level2">
 <h2 class="anchored" data-anchor-id="download-data-from-kaggle">Download data from Kaggle</h2>
 <div class="panel-tabset">
@@ -440,14 +435,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>kaggle_username_py<span class="op">=</span>os.getenv(<span class="st">'KAGGLE_USERNAME_PY'</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>kaggle_password_py<span class="op">=</span>os.getenv(<span class="st">'KAGGLE_PASSWORD_PY'</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>response_obj_py<span class="op">=</span>requests.get(<span class="st">'https://www.kaggle.com/api/v1/datasets/download/michaelbryantds/witch-trials/trials.csv'</span>, auth<span class="op">=</span>(kaggle_username_py, kaggle_password_py))</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>df_pandas<span class="op">=</span>pd.read_csv(response_obj_py.url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>data_url_on_kaggle <span class="op">=</span> <span class="st">'https://www.kaggle.com/api/v1/datasets/download/michaelbryantds/witch-trials/trials.csv'</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>kaggle_username <span class="op">=</span> os.getenv(<span class="st">'KAGGLE_USERNAME_PY'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>kaggle_password <span class="op">=</span> os.getenv(<span class="st">'KAGGLE_PASSWORD_PY'</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>response_obj_py <span class="op">=</span> requests.get(data_url_on_kaggle, auth <span class="op">=</span> (kaggle_username, kaggle_password))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>df_pandas <span class="op">=</span> pd.read_csv(response_obj_py.url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print_table</span>(py<span class="sc">$</span>df_pandas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table class="table table-striped" style="width: auto !important; ">
