@@ -4,5 +4,8 @@
 # python virtual env
 posts/2022-11-10-my-first-post/env/
 
+pyenv/
+
 # all local files
 *.local
+/_*.local

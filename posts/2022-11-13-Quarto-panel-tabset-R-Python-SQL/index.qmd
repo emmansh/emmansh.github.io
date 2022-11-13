@@ -1,0 +1,87 @@
+---
+title: "Execute and Print Tables Cross-Language in Quarto"
+description: ""
+date: 2022-11-13
+categories: [python, R, SQL, Quarto, panel-tabset] # self-defined categories
+image: img\highway.jpg
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+execute: 
+  warning: false
+---
+
+```{r}
+#| echo: false
+library(reticulate)
+use_virtualenv("./pyenv", required = TRUE)
+```
+
+## Set up SQL
+```{r}
+# R
+library(DBI)
+library(duckdb)
+library(ggplot2)
+```
+
+```{r}
+# R
+## create connection to SQL database
+con <- DBI::dbConnect(duckdb::duckdb(), dbdir = ":memory:")
+## copy mpg dataset from ggplot2 onto the SQL database, via `con`
+dbWriteTable(con, "mpg", ggplot2::mpg, overwrite = TRUE)
+```
+
+## Print tables from R, Python, and SQL in panel tabset
+### Utility function for nice printing
+```{r}
+#| echo: true
+library(kableExtra)
+
+print_table <- function(tbl, n_rows = 10){
+  tbl |> 
+    head(n_rows) |> 
+    kbl(row.names = FALSE) |> 
+    kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+}
+```
+
+::: {.panel-tabset}
+
+## R
+```{r}
+ggplot2::mpg |> 
+  dplyr::select(manufacturer, displ, cty) |> 
+  print_table()
+```
+
+## Python
+
+```{python}
+import pandas as pd
+import numpy as np
+
+x = [1,2,np.nan]
+y = [3,4,5]
+df = pd.DataFrame({'x':x,'y':y})
+```
+
+```{r}
+#| echo: false
+print_table(py$df)
+```
+
+
+## SQL
+```{sql}
+#| connection: con
+#| output.var: "tab_sql"
+SELECT manufacturer, displ, cty
+FROM mpg;
+```
+
+```{r}
+#| echo: false
+print_table(tab_sql)
+```
+
+:::
