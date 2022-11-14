@@ -12,7 +12,8 @@ execute:
 ```{r}
 #| echo: false
 library(reticulate)
-use_virtualenv("./pyenv", required = TRUE)
+library(here)
+use_virtualenv(here("pyenv"), required = TRUE)
 ```
 
 ## Set up SQL

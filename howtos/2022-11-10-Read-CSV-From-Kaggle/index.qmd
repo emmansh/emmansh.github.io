@@ -12,34 +12,19 @@ execute:
 ```{r}
 #| echo: false
 library(reticulate)
-use_virtualenv("./pyenv", required = TRUE)
+library(here)
+use_virtualenv(here("pyenv"), required = TRUE)
 ```
-
-Utility function for nice printing
-```{r}
-#| code-fold: true
-#| code-summary: "Code"
-#| echo: true
-# R
-library(kableExtra)
-
-print_table <- function(tbl, n_rows = 10){
-  tbl |> 
-    head(n_rows) |> 
-    kbl(row.names = FALSE) |> 
-    kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
-}
-```
-
 
 ## Download data from Kaggle
 
-::: {.panel-tabset}
-
+::: panel-tabset
 # R
+
 ```{r}
 library(httr)
 library(readr)
+source(here("utils", "print_table.R"))
 
 data_url_on_kaggle <- "https://www.kaggle.com/api/v1/datasets/download/michaelbryantds/witch-trials/trials.csv"
 
@@ -57,6 +42,7 @@ print_table(df_via_content)
 ```
 
 # Python
+
 ```{python}
 import requests
 import os
@@ -75,5 +61,4 @@ df_pandas = pd.read_csv(response_obj_py.url)
 #| echo: false
 print_table(py$df_pandas)
 ```
-
 :::
